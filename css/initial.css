@@ -1,11 +1,16 @@
 @charset "UTF-8";
 
+body {
+    min-height: 100vh;
+    background: linear-gradient(var(--bs-body-bg) 0%, #263C3A 100%);
+}
+
 .skeleton.active {
-    background: linear-gradient(135deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background: linear-gradient(135deg, rgba(var(--bs-body-color-rgb), 0.5) 25%, rgba(var(--bs-body-bg-rgb), 0.5) 50%, rgba(var(--bs-body-color-rgb), 0.5) 75%);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
-    border: 1px solid #e0e0e0;
-    border-radius: 1rem;
+    border: 1px solid rgba(var(--bs-body-color-rgb), 0.2);
+    border-radius: 0.5rem;
 }
 
 .skeleton.active * {

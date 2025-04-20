@@ -8,8 +8,8 @@ function onOffSkeleton(isActive) {
         for (let node of document.getElementsByClassName('skeleton'))
             node.classList.add('active');
     } else {
-        for (let node of document.getElementsByClassName('skeleton'))
-            node.classList.remove('active');
+        // for (let node of document.getElementsByClassName('skeleton'))
+            // node.classList.remove('active');
     }
 }
 
