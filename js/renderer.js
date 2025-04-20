@@ -1,15 +1,20 @@
-const mainHeader = document.getElementById('main-header');
-const mainFooter = document.getElementById('main-footer');
-const mainSection = document.getElementById('main-section');
-
 const contextPath = location.pathname.indexOf('/forestfull-page') === 0 ? '/forestfull-page' : '';
 const skeletonBufferMap = {} //TODO: 스켈레톤 방식 띄우는 동안 기존 데이터 잠시 저장할 맵
 
-function loadingProgress(onOff) {
+let mainHeader, mainFooter, mainSection;
 
+function onOffSkeleton(onOff) {
+    if (onOff) {
+        // document.getElementsByClassName('d').for; //TODO: 컴포넌트 기준 클래스명 필요
+    } else {
+        
+        
+    }
 }
 
 async function goPage(uri) {
+    onOffSkeleton(true);
+
     const pageXml = await fetch(contextPath + '/page' + uri + '.xml')
         .then(res => {
             if (!res.ok) throw new Error(res.statusText);
@@ -17,7 +22,7 @@ async function goPage(uri) {
         })
         .catch(err => {
             console.error(err);
-            loadingProgress(false);
+            onOffSkeleton(false);
             return undefined;
         });
 
@@ -31,6 +36,7 @@ async function goPage(uri) {
         pathName = contextPath;
     }
 
+    onOffSkeleton(false);
     mainSection.innerHTML = pageXml;
     history.pushState(pageXml, document.title + subTitle, pathName);
 }
@@ -39,8 +45,7 @@ async function goPage(uri) {
  * 렌더링 시작할 때
  */
 (function init() {
-
-
+    onOffSkeleton(true);
 })();
 
 
@@ -48,6 +53,10 @@ async function goPage(uri) {
  * 렌더링 완료 후
  */
 window.onload = function () {
+    mainHeader = document.getElementById('main-header');
+    mainFooter = document.getElementById('main-footer');
+    mainSection = document.getElementById('main-section');
+
     window.addEventListener('keydown', e => {
         if (e.key === 'F5') {
             e.preventDefault();
@@ -59,4 +68,6 @@ window.onload = function () {
     window.onpopstate = function (e) {
         mainSection.innerHTML = e.state;
     }
+
+    onOffSkeleton(false);
 }
