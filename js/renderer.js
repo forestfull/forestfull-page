@@ -3,12 +3,13 @@ const skeletonBufferMap = {} //TODO: 스켈레톤 방식 띄우는 동안 기존
 
 let mainHeader, mainFooter, mainSection;
 
-function onOffSkeleton(onOff) {
-    if (onOff) {
-        // document.getElementsByClassName('d').for; //TODO: 컴포넌트 기준 클래스명 필요
+function onOffSkeleton(isActive) {
+    if (isActive) {
+        for (let node of document.getElementsByClassName('skeleton'))
+            node.classList.add('active');
     } else {
-        
-        
+        for (let node of document.getElementsByClassName('skeleton'))
+            node.classList.remove('active');
     }
 }
 

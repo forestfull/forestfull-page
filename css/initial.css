@@ -1,9 +1,15 @@
 @charset "UTF-8";
 
-.skeleton {
-    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+.skeleton.active {
+    background: linear-gradient(135deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
+    border: 1px solid #e0e0e0;
+    border-radius: 1rem;
+}
+
+.skeleton.active * {
+    display: none;
 }
 
 @keyframes shimmer {
